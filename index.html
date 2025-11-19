@@ -41,13 +41,46 @@
 
         /* Navigation */
         nav {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+            background: transparent;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
         }
 
         nav.scrolled {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
             box-shadow: 0 2px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Nav text colors */
+        nav .nav-text {
+            color: white;
+            transition: color 0.3s ease;
+        }
+
+        nav.scrolled .nav-text {
+            color: #1a1a1a;
+        }
+
+        nav .nav-logo {
+            filter: brightness(0) invert(1);
+            transition: filter 0.3s ease;
+        }
+
+        nav.scrolled .nav-logo {
+            filter: none;
+        }
+
+        nav .nav-link {
+            color: rgba(255, 255, 255, 0.9);
+            transition: color 0.3s ease;
+        }
+
+        nav.scrolled .nav-link {
+            color: #4b5563;
+        }
+
+        nav .nav-link:hover {
+            color: #B99F85;
         }
 
         /* Hero section */
@@ -203,22 +236,22 @@
                 <!-- Logo -->
                 <div class="flex-shrink-0">
                     <a href="#home" class="flex items-center">
-                        <img src="./assets/image_0.png" alt="KEMURI Logo" class="h-10 w-auto">
-                        <span class="ml-3 text-2xl font-light tracking-widest text-gray-900">KEMURI</span>
+                        <img src="./assets/image_0.png" alt="KEMURI Logo" class="h-10 w-auto nav-logo">
+                        <span class="ml-3 text-2xl font-light tracking-widest nav-text">KEMURI</span>
                     </a>
                 </div>
 
                 <!-- Desktop Navigation -->
                 <div class="hidden md:flex items-center space-x-8">
-                    <a href="#story" class="text-sm font-light uppercase tracking-widest text-gray-700 hover:text-[#B99F85] transition-colors">Story</a>
-                    <a href="#menu" class="text-sm font-light uppercase tracking-widest text-gray-700 hover:text-[#B99F85] transition-colors">Menu</a>
-                    <a href="#gallery" class="text-sm font-light uppercase tracking-widest text-gray-700 hover:text-[#B99F85] transition-colors">Gallery</a>
-                    <a href="#private" class="text-sm font-light uppercase tracking-widest text-gray-700 hover:text-[#B99F85] transition-colors">Private Events</a>
+                    <a href="#story" class="text-sm font-light uppercase tracking-widest nav-link">Story</a>
+                    <a href="#menu" class="text-sm font-light uppercase tracking-widest nav-link">Menu</a>
+                    <a href="#gallery" class="text-sm font-light uppercase tracking-widest nav-link">Gallery</a>
+                    <a href="#private" class="text-sm font-light uppercase tracking-widest nav-link">Private Events</a>
                     <a href="#reservations" class="btn-primary">Reserve</a>
                 </div>
 
                 <!-- Mobile Menu Button -->
-                <button id="mobile-menu-btn" class="md:hidden text-gray-900 focus:outline-none">
+                <button id="mobile-menu-btn" class="md:hidden nav-text focus:outline-none">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                     </svg>
@@ -365,10 +398,7 @@
 
             <!-- Appetizers -->
             <div id="appetizers" class="menu-category">
-                <div class="text-center mb-8">
-                    <div class="image-container w-full max-w-md mx-auto mb-6 rounded-lg overflow-hidden shadow-lg">
-                        <img src="./assets/image_5.png" alt="Appetizers" class="w-full h-48 object-cover">
-                    </div>
+                <div class="text-center mb-6">
                     <h3 class="text-xl font-light text-gray-900 mb-2">Appetizers おつまみ</h3>
                     <div class="divider"></div>
                 </div>
@@ -405,10 +435,7 @@
 
             <!-- From the Fryer -->
             <div id="fryer" class="menu-category hidden">
-                <div class="text-center mb-8">
-                    <div class="image-container w-full max-w-md mx-auto mb-6 rounded-lg overflow-hidden shadow-lg">
-                        <img src="./assets/image_4.png" alt="Entrees" class="w-full h-48 object-cover">
-                    </div>
+                <div class="text-center mb-6">
                     <h3 class="text-xl font-light text-gray-900 mb-2">From the Fryer 揚げ物</h3>
                     <div class="divider"></div>
                 </div>
@@ -445,10 +472,7 @@
 
             <!-- Pan Seared -->
             <div id="seared" class="menu-category hidden">
-                <div class="text-center mb-8">
-                    <div class="image-container w-full max-w-md mx-auto mb-6 rounded-lg overflow-hidden shadow-lg">
-                        <img src="./assets/image_4.png" alt="Entrees" class="w-full h-48 object-cover">
-                    </div>
+                <div class="text-center mb-6">
                     <h3 class="text-xl font-light text-gray-900 mb-2">Pan Seared 焼き物</h3>
                     <div class="divider"></div>
                 </div>
@@ -501,10 +525,7 @@
 
             <!-- Rice Dishes -->
             <div id="rice" class="menu-category hidden">
-                <div class="text-center mb-8">
-                    <div class="image-container w-full max-w-md mx-auto mb-6 rounded-lg overflow-hidden shadow-lg">
-                        <img src="./assets/image_4.png" alt="Entrees" class="w-full h-48 object-cover">
-                    </div>
+                <div class="text-center mb-6">
                     <h3 class="text-xl font-light text-gray-900 mb-2">With Rice 飯物</h3>
                     <div class="divider"></div>
                 </div>
@@ -622,11 +643,6 @@
 
             <!-- Beverages -->
             <div id="drinks" class="menu-category hidden">
-                <div class="text-center mb-8">
-                    <div class="image-container w-full max-w-md mx-auto mb-6 rounded-lg overflow-hidden shadow-lg">
-                        <img src="./assets/image_3.png" alt="Drinks" class="w-full h-48 object-cover">
-                    </div>
-                </div>
                 <!-- Juices -->
                 <div class="text-center mb-6">
                     <h3 class="text-xl font-light text-gray-900 mb-2">Juice 果汁</h3>
