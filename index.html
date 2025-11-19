@@ -1107,7 +1107,7 @@
             <div class="mt-16 fade-in visible">
                 <div class="w-full h-96 rounded overflow-hidden">
                     <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3784.9662789997686!2d-66.06162832399944!3d18.45086837133669!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8c036f4c87c90b93%3A0x9c5e5c5c5c5c5c5c!2sKemuri!5e0!3m2!1sen!2spr!4v1234567890123!5m2!1sen!2spr"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3784.966!2d-66.0616283!3d18.4508683!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8c036f4c87c90b93%3A0xb5e5a5d5e5f5a5b5!2sKEMURI%20Japanese%20Restaurant%2C%20624%20Calle%20Ernesto%20Cerra%2C%20Santurce%2C%20San%20Juan%2C%2000907%2C%20Puerto%20Rico!5e0!3m2!1sen!2sus!4v1234567890123!5m2!1sen!2sus"
                         width="100%"
                         height="100%"
                         style="border:0;"
@@ -1267,32 +1267,54 @@
             canvas.height = window.innerHeight;
 
             const particles = [];
-            const particleCount = 50;
+            const particleCount = 35;
 
             class SmokeParticle {
                 constructor() {
                     this.x = Math.random() * canvas.width;
                     this.y = canvas.height + Math.random() * 100;
-                    this.size = Math.random() * 100 + 50;
-                    this.speedY = Math.random() * 0.5 + 0.2;
-                    this.speedX = Math.random() * 0.4 - 0.2;
-                    this.opacity = Math.random() * 0.3 + 0.1;
+                    this.size = Math.random() * 120 + 80;
+                    this.speedY = Math.random() * 0.3 + 0.15;
+                    this.speedX = (Math.random() - 0.5) * 0.3;
+                    this.opacity = Math.random() * 0.15 + 0.05;
+                    this.maxOpacity = this.opacity;
+                    this.wobble = Math.random() * Math.PI * 2;
+                    this.wobbleSpeed = Math.random() * 0.02 + 0.01;
                 }
 
                 update() {
                     this.y -= this.speedY;
-                    this.x += this.speedX;
-                    this.opacity -= 0.001;
+                    this.wobble += this.wobbleSpeed;
+                    this.x += this.speedX + Math.sin(this.wobble) * 0.5;
 
-                    if (this.y < -100 || this.opacity <= 0) {
+                    // Fade in at start, fade out at end
+                    if (this.y > canvas.height - 200) {
+                        this.opacity = Math.min(this.maxOpacity, this.opacity + 0.002);
+                    } else {
+                        this.opacity -= 0.0008;
+                    }
+
+                    if (this.y < -150 || this.opacity <= 0) {
                         this.y = canvas.height + Math.random() * 100;
                         this.x = Math.random() * canvas.width;
-                        this.opacity = Math.random() * 0.3 + 0.1;
+                        this.opacity = 0;
+                        this.maxOpacity = Math.random() * 0.15 + 0.05;
+                        this.size = Math.random() * 120 + 80;
+                        this.wobble = Math.random() * Math.PI * 2;
                     }
                 }
 
                 draw() {
-                    ctx.fillStyle = `rgba(191, 161, 129, ${this.opacity})`;
+                    // Create radial gradient for soft, glowing smoke effect
+                    const gradient = ctx.createRadialGradient(
+                        this.x, this.y, 0,
+                        this.x, this.y, this.size
+                    );
+                    gradient.addColorStop(0, `rgba(191, 161, 129, ${this.opacity * 0.8})`);
+                    gradient.addColorStop(0.5, `rgba(191, 161, 129, ${this.opacity * 0.4})`);
+                    gradient.addColorStop(1, `rgba(191, 161, 129, 0)`);
+
+                    ctx.fillStyle = gradient;
                     ctx.beginPath();
                     ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
                     ctx.fill();
@@ -1305,10 +1327,16 @@
 
             function animate() {
                 ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+                // Apply blur filter for softer smoke
+                ctx.filter = 'blur(2px)';
+
                 particles.forEach(particle => {
                     particle.update();
                     particle.draw();
                 });
+
+                ctx.filter = 'none';
                 requestAnimationFrame(animate);
             }
 
