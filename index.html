@@ -345,14 +345,22 @@
             </div>
 
             <!-- Menu Categories -->
-            <div class="flex flex-wrap justify-center gap-4 mb-10 fade-in">
-                <button class="menu-tab active" data-category="appetizers">Appetizers</button>
-                <button class="menu-tab" data-category="fryer">From the Fryer</button>
-                <button class="menu-tab" data-category="seared">Pan Seared</button>
-                <button class="menu-tab" data-category="simmered">Simmered</button>
-                <button class="menu-tab" data-category="rice">Rice Dishes</button>
-                <button class="menu-tab" data-category="desserts">Desserts</button>
-                <button class="menu-tab" data-category="drinks">Beverages</button>
+            <div class="mb-10 fade-in">
+                <!-- Top row -->
+                <div class="flex flex-wrap justify-center gap-4 mb-3">
+                    <button class="menu-tab active" data-category="appetizers">Appetizers</button>
+                    <button class="menu-tab" data-category="fryer">From the Fryer</button>
+                    <button class="menu-tab" data-category="seared">Pan Seared</button>
+                    <button class="menu-tab" data-category="simmered">Simmered</button>
+                    <button class="menu-tab" data-category="rice">Rice Dishes</button>
+                    <button class="menu-tab" data-category="soups">Soups</button>
+                </div>
+                <!-- Bottom row -->
+                <div class="flex flex-wrap justify-center gap-4">
+                    <button class="menu-tab" data-category="kids">Kid's Menu</button>
+                    <button class="menu-tab" data-category="desserts">Desserts</button>
+                    <button class="menu-tab" data-category="drinks">Beverages</button>
+                </div>
             </div>
 
             <!-- Appetizers -->
@@ -488,7 +496,7 @@
                     <h3 class="text-xl font-light text-gray-900 mb-2">With Rice 飯物</h3>
                     <div class="divider"></div>
                 </div>
-                <div class="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto mb-12">
+                <div class="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
                     <div class="menu-card p-4 rounded-sm fade-in">
                         <h4 class="text-lg font-normal mb-0 text-gray-900">Katsu Don</h4>
                         <p class="text-xs text-[#B99F85] mb-2">かつ丼</p>
@@ -531,27 +539,10 @@
                         <p class="text-[#B99F85] font-medium">$6</p>
                     </div>
                 </div>
+            </div>
 
-                <!-- Kid's Menu -->
-                <div class="text-center mb-6">
-                    <h3 class="text-xl font-light text-gray-900 mb-2">子供のメニュー Kid's Menu</h3>
-                    <div class="divider"></div>
-                </div>
-                <div class="grid md:grid-cols-2 gap-4 max-w-4xl mx-auto mb-8">
-                    <div class="menu-card p-4 rounded-sm fade-in">
-                        <h4 class="text-lg font-normal mb-2 text-gray-900">Kara Kids</h4>
-                        <p class="text-xs text-gray-600 mb-2">Japanese fried chicken with rice ball</p>
-                        <p class="text-[#B99F85] font-medium text-sm">$12</p>
-                    </div>
-
-                    <div class="menu-card p-4 rounded-sm fade-in">
-                        <h4 class="text-lg font-normal mb-2 text-gray-900">Mini Curry</h4>
-                        <p class="text-xs text-gray-600 mb-2">Our classic beef curry but in a smaller portion</p>
-                        <p class="text-[#B99F85] font-medium text-sm">$12</p>
-                    </div>
-                </div>
-
-                <!-- Soups -->
+            <!-- Soups -->
+            <div id="soups" class="menu-category hidden">
                 <div class="text-center mb-6">
                     <h3 class="text-xl font-light text-gray-900 mb-2">Soup 汁物</h3>
                     <div class="divider"></div>
@@ -569,6 +560,27 @@
                         <p class="text-xs text-[#B99F85] mb-2">コーン・ポタージュ</p>
                         <p class="text-sm text-gray-600 mb-3">Corn soup, bread croutons, parsley</p>
                         <p class="text-[#B99F85] font-medium">$8</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Kid's Menu -->
+            <div id="kids" class="menu-category hidden">
+                <div class="text-center mb-6">
+                    <h3 class="text-xl font-light text-gray-900 mb-2">Kid's Menu 子供のメニュー</h3>
+                    <div class="divider"></div>
+                </div>
+                <div class="grid md:grid-cols-2 gap-4 max-w-4xl mx-auto">
+                    <div class="menu-card p-4 rounded-sm fade-in">
+                        <h4 class="text-lg font-normal mb-2 text-gray-900">Kara Kids</h4>
+                        <p class="text-xs text-gray-600 mb-2">Japanese fried chicken with rice ball</p>
+                        <p class="text-[#B99F85] font-medium">$12</p>
+                    </div>
+
+                    <div class="menu-card p-4 rounded-sm fade-in">
+                        <h4 class="text-lg font-normal mb-2 text-gray-900">Mini Curry</h4>
+                        <p class="text-xs text-gray-600 mb-2">Our classic beef curry but in a smaller portion</p>
+                        <p class="text-[#B99F85] font-medium">$12</p>
                     </div>
                 </div>
             </div>
@@ -953,6 +965,9 @@
                 </div>
                 <div class="fade-in image-container h-80 rounded-sm overflow-hidden">
                     <img src="./assets/image_3.png" alt="KEMURI Drink" class="w-full h-full object-cover">
+                </div>
+                <div class="fade-in image-container h-80 rounded-sm overflow-hidden">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRKG1Wnvyog6I_jIAdnNZEr-pKVI4_EmDO0xg&s" alt="KEMURI Dining" class="w-full h-full object-cover">
                 </div>
             </div>
         </div>
